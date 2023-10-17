@@ -1,170 +1,162 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Finder</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
 
+        header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
 
-<div class="col-md-6 offset-md-3"></div>
+        h1 {
+            font-size: 36px;
+        }
 
-<br>
-{% if user.is_authenticated %}
+        section {
+            background-color: #444;
+            padding: 20px;
+            margin: 20px;
+        }
 
-<style>
-    body {
-        background-color: #222;
-        color: #fff;
-        font-family: Arial, sans-serif;
-    }
+        h2 {
+            font-size: 24px;
+        }
 
-    header {
-        background-color: #333;
-        padding: 20px;
-        text-align: center;
-    }
+        p {
+            font-size: 18px;
+        }
 
-    h1 {
-        font-size: 36px;
-    }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    section {
-        background-color: #444;
-        padding: 20px;
-        margin: 20px;
-    }
+        li {
+            margin: 10px 0;
+        }
 
-    h2 {
-        font-size: 24px;
-    }
+        a {
+            color: #00aaff;
+            text-decoration: none;
+        }
 
-    p {
-        font-size: 18px;
-    }
+        a:hover {
+            text-decoration: underline;
+        }
 
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 10px;
+        }
 
-    li {
-        margin: 10px 0;
-    }
+        footer p {
+            font-size: 14px;
+        }
 
-    a {
-        color: #00aaff;
-        text-decoration: none;
-    }
+        /* Style for the login form */
+        .login-form {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
 
-    a:hover {
-        text-decoration: underline;
-    }
+        .form-label {
+            color: #fff;
+        }
 
-    footer {
-        background-color: #333;
-        text-align: center;
-        padding: 10px;
-    }
+        .form-control {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
 
-    footer p {
-        font-size: 14px;
-    }
-</style>
+        .form-control::placeholder {
+            color: #aaa;
+        }
+
+        .btn-secondary {
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0077aa;
+        }
+    </style>
 </head>
 <body>
 <header>
     <h1>Welcome to Furniture Finder</h1>
 </header>
 
-<section id="home">
-    <h2>Transform Your Space with Furniture Finder</h2>
-    <p>Discover the perfect furniture pieces for your interior design projects with our innovative software.</p>
-</section>
+{% if user.is_authenticated %}
+    <section id="home">
+        <h2>Transform Your Space with Furniture Finder</h2>
+        <p>Discover the perfect furniture pieces for your interior design projects with our innovative software.</p>
+    </section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>Furniture Finder is dedicated to making interior design easier and more enjoyable. We provide a comprehensive software solution for finding the ideal furniture for any space.</p>
-</section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Furniture Finder is dedicated to making interior design easier and more enjoyable. We provide a comprehensive software solution for finding the ideal furniture for any space.</p>
+    </section>
 
-<section id="features">
-    <h2>Key Features</h2>
-    <ul>
-        <li><strong>Furniture Search:</strong> Easily search for furniture items based on style, color, and size.</li>
-        <li><strong>Virtual Room Planning:</strong> Visualize how furniture will look in your space with our 3D room planning feature.</li>
-        <li><strong>Interior Design Inspiration:</strong> Get inspired with our curated collection of interior design ideas and trends.</li>
-    </ul>
-</section>
+    <section id="features">
+        <h2>Key Features</h2>
+        <ul>
+            <li><strong>Furniture Search:</strong> Easily search for furniture items based on style, color, and size.</li>
+            <li><strong>Virtual Room Planning:</strong> Visualize how furniture will look in your space with our 3D room planning feature.</li>
+            <li><strong>Interior Design Inspiration:</strong> Get inspired with our curated collection of interior design ideas and trends.</li>
+        </ul>
+    </section>
 
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>If you have any questions or would like to learn more about our software, feel free to get in touch with us:</p>
-    <address>
-        Email: <a href="mailto:info@furniturefinder.com">info@furniturefinder.com</a><br>
-        Phone: +1 (123) 456-7890<br>
-    </address>
-</section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to learn more about our software, feel free to get in touch with us:</p>
+        <address>
+            Email: <a href="mailto:info@furniturefinder.com">info@furniturefinder.com</a><br>
+            Phone: +1 (123) 456-7890<br>
+        </address>
+    </section>
 
-<footer>
-    <p>&copy; 2023 Furniture Finder | Created by The Dragons</p>
-</footer>
+    <footer>
+        <p>&copy; 2023 Furniture Finder | Created by The Dragons</p>
+    </footer>
 {% else %}
-<style>
-    body {
-        background-color: #222;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 20px;
-    }
-
-    form {
-        background-color: #444;
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    .form-label {
-        color: #fff;
-    }
-
-    .form-control {
-        background-color: #333;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 5px;
-    }
-
-    .form-control::placeholder {
-        color: #aaa;
-    }
-
-    .btn-secondary {
-        background-color: #00aaff;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .btn-secondary:hover {
-        background-color: #0077aa;
-    }
-</style>
-</head>
-<body>
-<form method="post" action="{& url home}">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Username</label>
-        <input type="text" class="form-control" name="first_name" placeholder="Username" required>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Password" required>
-    </div>
-    <button type="submit" class="btn btn-secondary">Login</button>
-</form>
+    <form method="POST" action="{% url 'home' %}" class="login-form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
 {% endif %}
+</body>
+</html>
 {% endblock %}
