@@ -4,23 +4,10 @@
 
 
 <div class="col-md-6 offset-md-3"></div>
-<h1>Login</h1>
 
-<form method ="post" action="{& url home}">
-    {% csrf_token %}
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</form>
+<br>
+{% if user.is_authenticated %}
+
 <style>
     body {
         background-color: #222;
@@ -117,4 +104,67 @@
 <footer>
     <p>&copy; 2023 Furniture Finder | Created by The Dragons</p>
 </footer>
+{% else %}
+<style>
+    body {
+        background-color: #222;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+
+    form {
+        background-color: #444;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .form-label {
+        color: #fff;
+    }
+
+    .form-control {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+    }
+
+    .form-control::placeholder {
+        color: #aaa;
+    }
+
+    .btn-secondary {
+        background-color: #00aaff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+        background-color: #0077aa;
+    }
+</style>
+</head>
+<body>
+<form method="post" action="{& url home}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="first_name" placeholder="Username" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn btn-secondary">Login</button>
+</form>
+{% endif %}
 {% endblock %}
