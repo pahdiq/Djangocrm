@@ -26,4 +26,3 @@ def home(request):
             messages.error(request, "Error logging in. Please try again.")
             return redirect('home')
     else:        return render(request, 'home.html', {})
-
