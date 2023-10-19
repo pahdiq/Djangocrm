@@ -3,6 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
 
+def aboutUs(request):
+    return render(request, 'aboutUs.html', {})
+
+def contactUs(request):
+    return render(request, 'contactUs.html', {})
+
+
+def viewer(request):
+    return render(request, 'viewer.html', {})
 
 def login_user(request):
     login(request)
