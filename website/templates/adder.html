@@ -1,6 +1,68 @@
 {% extends "base.html" %}
 
 {% block content %}
+<body>
+    <style>
+        form {
+            background-color: #222;
+        }
+
+        .card {
+            border: none;
+        }
+    </style>
+    <div class="container justify-content-center">
+        <div>
+            <h1 class="text-center">Add a new product</h1>
+        </div>
+        <div class="card">
 
 
+            <form method = "POST" action="" enctype="multipart/form-data">
+                <div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                        <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+                      </div>
+                      
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input type="text" class="form-control" placeholder="Dollars">
+                        <input type="text" class="form-control" placeholder="Cents" aria-label="Cents" aria-describedby="basic-addon1" pattern="\d{2}">
+                    </div>
+                      
+                      <div class="input-group">
+                        <span class="input-group-text">Description</span>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Insert picture below</label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Catagory</span>
+                    <input type="text" class="form-control" placeholder="Catagory" aria-label="catagory" aria-describedby="basic-addon1">
+                  </div>
+
+                  {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Oops!</strong> Something went wrong.
+        {% for field in form %}
+            {% if field.errors %}
+                {{ field.errors }}
+            {% endif %}
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    
+    {{form.as_p}}
+    
+            </form>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</body>
 {% endblock %}

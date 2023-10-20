@@ -1,17 +1,37 @@
-
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    /* Style for the custom list */
+    .custom-list {
+        float: left;
+        background-color: #444;
+        list-style: none;
+        padding: 0;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniture Finder</title>
-    
+    .custom-list li {
+        color: rgb(0, 0, 0);
+        margin: 10px 0;
+    }
 
-<h1>Find your perfect furniture here!</h1>
-<br>
+    .custom-list li:hover {
+        color: black;
+        background-color: rgb(7, 169, 214);
+    }
+</style>
 
+<div class="row">
+    <div class="col-md-3">
+        <ul class="list-group list-group-flush custom-list">
+            <li class="list-group-item">All</li>
 
+            {% for catagory in catagories %}
 
+            <li class="list-group-item">{{catagory.name}}</li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

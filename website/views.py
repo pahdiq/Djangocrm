@@ -2,6 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
+from .models import Categorie, Product
+
+# Create your views here.
+def viewer(request):
+    categories = Categorie.objects.all()
+    context = {'categories': categories}
+    return render(request, 'viewer.html', context)
 
 def aboutUs(request):
     return render(request, 'aboutUs.html', {})
@@ -11,10 +18,6 @@ def contactUs(request):
 
 def adder(request):
     return render(request, 'adder.html', {})
-
-
-def viewer(request):
-    return render(request, 'viewer.html', {})
 
 def login_user(request):
     login(request)
@@ -55,5 +58,22 @@ def home(request):
             return redirect('home')
     else:
         return render(request, 'home.html', {})
-    
-    return render(request, 'home.html', {})
+
+
+
+def addProduct(request):
+    categories = Categorie.objects.all()
+
+
+    if request.method == 'POST':
+            name = request.POST['name']
+            price = request.POST['price']
+            description = request.POST['description']
+            image = request.POST['image']
+            categorie = request.POST['categorie']
+            product = Product(name=name, price=price, description=description, image=image, categorie=categorie)
+            product.save()
+            messages.success(request, "You have added a product.")
+            return redirect('home')
+    else:
+            return render(request, 'addProduct.html', {})
