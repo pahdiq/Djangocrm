@@ -9,6 +9,9 @@ def aboutUs(request):
 def contactUs(request):
     return render(request, 'contactUs.html', {})
 
+def adder(request):
+    return render(request, 'adder.html', {})
+
 
 def viewer(request):
     return render(request, 'viewer.html', {})
