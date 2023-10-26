@@ -120,10 +120,9 @@ STATIC_URL = '/static/'
 Media_URL = '/images/'
 
 STATICFILES_DIRS = [
-
     BASE_DIR / "static",
-
 ]
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]   

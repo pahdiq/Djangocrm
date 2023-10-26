@@ -32,3 +32,32 @@ class SignUpForm(UserCreationForm):
 
 
 
+class addfurnitureform(UserCreationForm):
+    furniture_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Name'}), max_length=30, required=True)
+    furniture_price = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Price'}), max_length=30, required=True)
+    furniture_description = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Description'}), max_length=30, required=True)
+    furniture_image = forms.ImageField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Image'}), max_length=30, required=True)
+    furniture_category = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Category'}), max_length=30, required=True)
+
+    class Meta:
+        model = User
+        fields = ('furniture_name', 'furniture_price', 'furniture_description', 'furniture_image', 'furniture_category')
+
+    def __init__(self, *args, **kwargs):
+        super(addfurnitureform, self).__init__(*args, **kwargs)
+
+        self.fields['furniture_name'].widget.attrs['class'] = 'form-control'
+        self.fields['furniture_name'].widget.attrs['placeholder'] = 'Furniture Name'
+        self.fields['furniture_name'].label = ''
+        self.fields['furniture_name'].help_text = '<small>Name your piece of fruniture</small></span>'
+
+        self.fields['furniture_price'].widget.attrs['class'] = 'form-control'
+        self.fields['furniture_price'].widget.attrs['placeholder'] = 'Furniture Price'
+        self.fields['furniture_price'].label = ''
+        self.fields['furniture_price'].help_text = '<small"><li>How musch does your furniture cost?</li></ul>'
+        self.fields['furniture_description'].widget.attrs['class'] = 'form-control'
+        self.fields['furniture_description'].widget.attrs['placeholder'] = 'Furniture Description'
+        self.fields['furniture_description'].label = ''
+        self.fields['furniture_description'].help_text = '<small>Enter the detailed description here</small></span>'	
+
+        addfurnitureform.furniture_image = forms.ImageField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Image'}), max_length=30, required=True)

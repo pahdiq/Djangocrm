@@ -7,6 +7,7 @@ class Categorie(models.Model):
         return self.name
 
 
+
 class Product(models.Model):
     catagory = models.ForeignKey(Categorie, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(null=False, blank=False)
@@ -16,4 +17,4 @@ class Product(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.description
+        return self.name

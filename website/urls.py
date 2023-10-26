@@ -12,9 +12,7 @@ urlpatterns = [
     path('viewer/', views.viewer, name='viewer'),
     path('aboutUs/' , views.aboutUs, name='aboutUs'),
     path('contactUs/' , views.contactUs, name='contactUs'),
-    path('adder/', views.adder, name='adder'),
-    path('addProduct/', views.addProduct, name='addProduct'),
-
+    path('adder/', views.addProduct, name='adder'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

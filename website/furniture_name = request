@@ -1,0 +1,8 @@
+ furniture_name = request.POST['furniture_name']
+            furniture_price = request.POST['furniture_price']
+            furniture_description = request.POST['furniture_description']
+            furniture_image = request.POST['furniture_image']
+            furniture_category = request.POST['furniture_category']
+            furniture = Product(furniture_name=furniture_name, furniture_price=furniture_price, furniture_description=furniture_description, furniture_image=furniture_image, furniture_category=furniture_category)
+            furniture.save()
+            messages.success(request, "You have added a piece of furniture.")

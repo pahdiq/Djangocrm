@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, addfurnitureform
 from .models import Categorie, Product
+from django import forms
+
 
 # Create your views here.
 def viewer(request):
@@ -16,9 +18,6 @@ def aboutUs(request):
 def contactUs(request):
     return render(request, 'contactUs.html', {})
 
-def adder(request):
-    return render(request, 'adder.html', {})
-
 def login_user(request):
     login(request)
     messages.success(request, "You have been logged in.")
@@ -29,20 +28,6 @@ def logout_user(request):
     messages.success(request, "You have been logged out.")
     return redirect('home')
 
-def register_user(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            messages.success(request, 'You have registered successfully, Welcome!')
-            return redirect('home')
-    else:
-        form = SignUpForm()
-    return render(request, 'register.html', {'form': form})
 
 def home(request):
     if request.method == 'POST':
@@ -59,21 +44,25 @@ def home(request):
     else:
         return render(request, 'home.html', {})
 
-
-
-def addProduct(request):
-    categories = Categorie.objects.all()
-
-
+def register_user(request):
     if request.method == 'POST':
-            name = request.POST['name']
-            price = request.POST['price']
-            description = request.POST['description']
-            image = request.POST['image']
-            categorie = request.POST['categorie']
-            product = Product(name=name, price=price, description=description, image=image, categorie=categorie)
-            product.save()
-            messages.success(request, "You have added a product.")
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, 'You have registered successfully, Welcome!')
             return redirect('home')
     else:
-            return render(request, 'addProduct.html', {})
+        form = SignUpForm()
+    return render(request, 'register.html', {'form': form})
+
+def addProduct(request):
+    if request.method == 'POST':
+        form = addfurnitureform(request.POST)
+    else:
+        form = addfurnitureform()
+    return render(request, 'register.html', {'form': form})
+    

@@ -6,22 +6,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniture Finder</title>
+    <title>Four Storie</title>
 </head>
 <body>
 <header>
-    <h1>Welcome to Furniture Finder</h1>
+    <h1>Welcome to Four Storie</h1>
 </header>
 
 {% if user.is_authenticated %}
     <section id="home">
-        <h2>Transform Your Space with Furniture Finder</h2>
+        <h2>Transform Your Space with Four Storie</h2>
         <p>Discover the perfect furniture pieces for your interior design projects with our innovative software.</p>
     </section>
 
     <section id="about">
         <h2>About Us</h2>
-        <p>Furniture Finder is dedicated to making interior design easier and more enjoyable. We provide a comprehensive software solution for finding the ideal furniture for any space.</p>
+        <p>Four Storie is dedicated to making interior design easier and more enjoyable. We provide a comprehensive software solution for finding the ideal furniture for any space.</p>
     </section>
 
     <section id="features">
@@ -37,13 +37,13 @@
         <h2>Contact Us</h2>
         <p>If you have any questions or would like to learn more about our software, feel free to get in touch with us:</p>
         <address>
-            Email: <a href="mailto:info@furniturefinder.com">info@furniturefinder.com</a><br>
+            Email: <a href="mailto:info@furniturefinder.com">info@fourStorie.com</a><br>
             Phone: +1 (123) 456-7890<br>
         </address>
     </section>
 
     <footer>
-        <p>&copy; 2023 Furniture Finder | Created by The Dragons</p>
+        <p>&copy; 2023 Four Storie | Created by The Dragons</p>
     </footer>
 {% else %}
     <form method="POST" action="{% url 'home' %}" class="login-form">
