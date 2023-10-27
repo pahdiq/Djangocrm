@@ -4,8 +4,6 @@
 <style>
     /* Style for the custom list */
     .custom-list {
-        float: left;
-        background-color: #444;
         list-style: none;
         padding: 0;
     }
@@ -19,19 +17,37 @@
         color: black;
         background-color: rgb(7, 169, 214);
     }
+
+    .custom-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .custom-col {
+        flex-basis: calc(33.33% - 10px); /* 10px margin between columns */
+    }
 </style>
 
 <div class="row">
-    <div class="col-md-3">
-        <ul class="list-group list-group-flush custom-list">
-            <li class="list-group-item">All</li>
+    <div class="col-md-9">
+        <div class="custom-row">
+            {% for category in categories %}
+                <div class="custom-col">
+                    <ul class="list-group list-group-flush custom-list">
+                        <li class="list-group-item">{{ category.name }}</li>
+                    </ul>
+                </div>
+                {% if loop.index is not None and loop.index|divisibleby:3 %}
 
-            {% for catagory in catagorie %}
-
-            <li class="list-group-item">{{catagory.name}}</li>
-
+                    </div>
+                    <div class="custom-row">
+                {% endif %}
             {% endfor %}
-        </ul>
+        </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}
