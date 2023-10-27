@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Products</title>
+</head>
+<body>
+    <h1>Products in {{ category.name }}:</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - Price: {{ product.price }} - {{ product.description }}
+                <img src="{{ product.image }}" alt="{{ product.name }} Image">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+{% endblock %}

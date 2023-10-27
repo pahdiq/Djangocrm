@@ -1,3 +1,13 @@
+<!-- 
+FILEPATH: /c:/Users/Coit Nelson/dcrm/virt/dcrm/website/templates/viewer.html
+
+This HTML file extends the base.html file and displays a custom list of categories. 
+The list is styled with CSS to have no bullets, a 15px margin between items, and a hover effect. 
+The categories are displayed in a row with three columns, and each column takes up 33.33% of the available space. 
+The list is generated using a for loop that iterates over the categories passed to the template. 
+
+The script tags at the end of the file include jQuery and Bootstrap libraries.
+-->
 {% extends "base.html" %}
 
 {% block content %}
@@ -10,12 +20,12 @@
 
     .custom-list li {
         color: rgb(0, 0, 0);
-        margin: 10px 0;
+        margin: 15px 0;
     }
 
     .custom-list li:hover {
         color: black;
-        background-color: rgb(7, 169, 214);
+        background-color: rgb(11, 99, 221);
     }
 
     .custom-row {
@@ -25,7 +35,7 @@
     }
 
     .custom-col {
-        flex-basis: calc(33.33% - 10px); /* 10px margin between columns */
+        flex-basis: calc(33.33% - 15px); /* 15px margin between columns */
     }
 </style>
 

@@ -46,7 +46,7 @@ class addfurnitureform(forms.ModelForm):
     name = forms.CharField(
         max_length=100,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=False  # Set the field as not required
+        required=True  # Set the field as required
     )
 
     price = forms.DecimalField(
@@ -64,5 +64,5 @@ class addfurnitureform(forms.ModelForm):
 
     description = forms.CharField(
         widget=forms.Textarea(attrs={'class': 'form-control'}),
-        required=False  # Set the field as not required
+        required=True  # Set the field as not required
     )
