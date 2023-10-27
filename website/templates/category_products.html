@@ -13,8 +13,7 @@
     <ul>
         {% for product in products %}
             <li>
-                {{ product.name }} - Price: {{ product.price }} - {{ product.description }}
-                <img src="{{ product.image }}" alt="{{ product.name }} Image">
+                {{ product.name }} - Price: ${{ product.price }} - {{ product.description }}
             </li>
         {% endfor %}
     </ul>
