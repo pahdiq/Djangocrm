@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from.models import Product, Categorie
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}), required=True)
@@ -31,33 +32,37 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = '<small>Enter the same password as before, for verification.</small></span>'	
 
 
-
-class addfurnitureform(UserCreationForm):
-    furniture_name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Name'}), max_length=30, required=True)
-    furniture_price = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Price'}), max_length=30, required=True)
-    furniture_description = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Description'}), max_length=30, required=True)
-    furniture_image = forms.ImageField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Image'}), max_length=30, required=True)
-    furniture_category = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Category'}), max_length=30, required=True)
-
+class addfurnitureform(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ('furniture_name', 'furniture_price', 'furniture_description', 'furniture_image', 'furniture_category')
+        model = Product
+        fields = ['catagory', 'image', 'name', 'price', 'size', 'description']
 
-    def __init__(self, *args, **kwargs):
-        super(addfurnitureform, self).__init__(*args, **kwargs)
 
-        self.fields['furniture_name'].widget.attrs['class'] = 'form-control'
-        self.fields['furniture_name'].widget.attrs['placeholder'] = 'Furniture Name'
-        self.fields['furniture_name'].label = ''
-        self.fields['furniture_name'].help_text = '<small>Name your piece of fruniture</small></span>'
+    image = forms.ImageField(
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        required=False  # Set the field as not required
+    )
 
-        self.fields['furniture_price'].widget.attrs['class'] = 'form-control'
-        self.fields['furniture_price'].widget.attrs['placeholder'] = 'Furniture Price'
-        self.fields['furniture_price'].label = ''
-        self.fields['furniture_price'].help_text = '<small"><li>How musch does your furniture cost?</li></ul>'
-        self.fields['furniture_description'].widget.attrs['class'] = 'form-control'
-        self.fields['furniture_description'].widget.attrs['placeholder'] = 'Furniture Description'
-        self.fields['furniture_description'].label = ''
-        self.fields['furniture_description'].help_text = '<small>Enter the detailed description here</small></span>'	
+    name = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False  # Set the field as not required
+    )
 
-        addfurnitureform.furniture_image = forms.ImageField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Furniture Image'}), max_length=30, required=True)
+    price = forms.DecimalField(
+        max_digits=7,
+        decimal_places=2,
+        widget=forms.NumberInput(attrs={'class': 'form-control'}),
+        required=False  # Set the field as not required
+    )
+
+    size = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        required=False  # Set the field as not required
+    )
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control'}),
+        required=False  # Set the field as not required
+    )

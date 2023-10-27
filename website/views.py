@@ -59,10 +59,13 @@ def register_user(request):
         form = SignUpForm()
     return render(request, 'register.html', {'form': form})
 
+
 def addProduct(request):
     if request.method == 'POST':
-        form = addfurnitureform(request.POST)
+        form = addfurnitureform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Redirect to the 'home' view
     else:
         form = addfurnitureform()
-    return render(request, 'register.html', {'form': form})
-    
+    return render(request, 'adder.html', {'form': form})

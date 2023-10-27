@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-6 offset-md-3">
-<h1>Add furniture </h1>
+<div style="text-align: center;">
+    <h1>Add furniture</h1>
 </div>
 <br>
 
-<form method="POST" action="">
+<form method="POST"  enctype="multipart/form-data" action="">
     {% csrf_token %}
     {% if form.errors %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
